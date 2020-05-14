@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+}
+.container {
+  margin: 0;
+  padding: 0;
+  max-width: 1440px;
+}
+
+.wrapper {
+  .image {
+    //    position: relative;
+    // display: flex;
+  }
+
+  img {
+    // position: absolute;
+    width: 140px;
+    height: 100px;
+    // left: 0;
+  }
+}
+.search-box {
+  background-color: rgb(224, 220, 220);
+  padding: 3rem;
+  h1 {
+    display: block;
+    margin: 0;
+    padding: 2rem;
+  }
+
+  input[type="text"] {
+    padding: 0.5rem 8rem 0.5rem 0;
+    margin: 1rem;
+  }
+  button {
+    padding: 0.6rem 2rem;
+    background-color: black;
+    color: white;
+    border: none;
+  }
+}
+.products {
+}
+.product-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}

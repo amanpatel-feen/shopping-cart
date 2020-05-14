@@ -1,18 +1,26 @@
 import React from "react";
 // import Up from "../assets/Up.svg";
 // import Down from '../assets/Down.svg';
-// import "./CountryCard.css";
 import { storeProducts, detailProduct } from "../data";
+
+import "./Products.scss";
+
+import data from "./data.json";
 
 class Product extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: null };
+    this.state = { data: data };
   }
 
   // console.log(prod);
   componentDidMount() {
-    fetch("./data.json")
+    fetch(`./data.json`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
       .then((response) => {
         return response.json();
       })
@@ -47,20 +55,34 @@ class Product extends React.Component {
       ele = this.state.data.map(function (e, idx) {
         return (
           <div key={idx} className="product-block">
-            <div className="blocks">
-              <div>
-                <img
-                  className="prod-img"
-                  id="product-flag"
-                  src={e["img"]}
-                  alt={e["title"]}
-                  align="left"
-                />
-                <h4 id="product-name">{e["title"]}</h4>
-                <div>
-                  <span>{e["title"]}</span>
-                  <span>{e["info"]}</span>
-                  <span>{e["price"]}</span>
+            <div className="container">
+              <div className="wrapper">
+                <div className="pro">
+                  <div className="image">
+                    <a
+                      href="./product.js
+                    "
+                    >
+                      <img
+                        className="prod-img"
+                        onClick={() => console.log("hello from image")}
+                        id="product-flag"
+                        src={e["img"]}
+                        alt={e["title"]}
+                        align="left"
+                      />
+                    </a>
+                    <div class="button">
+                      <a href="./cart.js"> BUTTON </a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 id="product-name">{e["title"]}</h4>
+
+                    <span>{e["info"]}</span>
+                    <span>{e["price"]}</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -69,17 +91,26 @@ class Product extends React.Component {
       });
     }
     return (
-      <div className="product-container">
-        <center>
-          <input
-            type="text"
-            id="search-box"
-            onKeyUp={this.filter}
-            placeholder="Search..."
-          />
-        </center>
-        <br />
-        {ele}
+      <div className="container">
+        <div className="product-container">
+          <div className="search-box">
+            <h1>Mobile E-commerce Shop</h1>
+            <input
+              type="text"
+              id="search-box"
+              onKeyUp={this.filter}
+              placeholder="Search..."
+            />
+            <button>Submit</button>
+          </div>
+          <div className="products">
+            <h2>Products Listing</h2>
+            <p className="lead">
+              loremloremloremloremloremloremloremloremloremloremloremloremlorem
+            </p>
+            <div className="product-wrapper">{ele}</div>
+          </div>
+        </div>
       </div>
     );
   }

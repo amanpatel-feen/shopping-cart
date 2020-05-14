@@ -3,7 +3,7 @@ $device-width: 1440px;
 .container {
   max-width: $device-width;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0;
 }
 a {
   text-decoration: none;
@@ -16,5 +16,10 @@ a {
 .right {
   list-style: none;
   @extend %flexbox;
-  // float: right;
+  margin: 0;
+
+  float: right;
+}
+.nav-wrapper {
+  background-color: rgb(224, 220, 220);
 }
