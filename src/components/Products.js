@@ -1,13 +1,14 @@
 import React from "react";
-// import Up from "../assets/Up.svg";
-// import Down from '../assets/Down.svg';
-import { storeProducts, detailProduct } from "../data";
 
+import { storeProducts, detailProduct } from "../data";
+import { NavLink, BrowserRouter, Switch, Route } from "react-router-dom";
+import Product from "./Product";
+import ProductDetail from "./ProductDetail";
 import "./Products.scss";
 
 import data from "./data.json";
 
-class Product extends React.Component {
+class Products extends React.Component {
   constructor(props) {
     super(props);
     this.state = { data: data };
@@ -35,6 +36,7 @@ class Product extends React.Component {
             image: e["img"],
           };
         });
+
         this.setState({ data: data });
       });
   }
@@ -51,38 +53,49 @@ class Product extends React.Component {
 
   render() {
     let ele = null;
+    let temp = this.props.handler;
     if (this.state.data) {
       ele = this.state.data.map(function (e, idx) {
         return (
           <div key={idx} className="product-block">
             <div className="container">
               <div className="wrapper">
-                <div className="pro">
-                  <div className="image">
+                <div className="image">
+                  <img
+                    className="prod-img"
+                    src={e["img"]}
+                    alt={e["title"]}
+                    align="left"
+                  />
+                </div>
+                <div class="button">
+                  <button
+                    onClick={() => {
+                      temp(e, 1);
+                    }}
+                  >
+                    {" "}
+                    Add To Cart{" "}
+                  </button>
+                </div>
+
+                <div className="info-price">
+                  <NavLink to="./ProductDetail">
                     <a
-                      href="./product.js
-                    "
+                      href="/ProductDetail"
+                      className="pro-name"
+                      id="product-name"
+                      onClick={() => {
+                        temp(e, 0);
+                      }}
+                      id={e["id"]}
                     >
-                      <img
-                        className="prod-img"
-                        onClick={() => console.log("hello from image")}
-                        id="product-flag"
-                        src={e["img"]}
-                        alt={e["title"]}
-                        align="left"
-                      />
+                      {e["title"]}
                     </a>
-                    <div class="button">
-                      <a href="./cart.js"> BUTTON </a>
-                    </div>
-                  </div>
+                  </NavLink>
 
-                  <div>
-                    <h4 id="product-name">{e["title"]}</h4>
-
-                    <span>{e["info"]}</span>
-                    <span>{e["price"]}</span>
-                  </div>
+                  <span>{e["info"]}</span>
+                  <span>${e["price"]}</span>
                 </div>
               </div>
             </div>
@@ -115,4 +128,4 @@ class Product extends React.Component {
     );
   }
 }
-export default Product;
+export default Products;

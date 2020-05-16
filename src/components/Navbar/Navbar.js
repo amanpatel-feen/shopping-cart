@@ -4,11 +4,24 @@ import Products from "../Products";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProductList } from "../context";
+import ProductDetail from "../ProductDetail";
+import Checkout from "../Checkout";
 
 import "./Navbar.scss";
-const Navbar = () => {
-  return (
-    <ProductList>
+class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeProduct: null,
+    };
+    this.cart = [];
+  }
+  handler = (val, addToCart) => {
+    if (addToCart) this.cart.push({ productId: val.id, itemCount: 1 });
+    else this.setState({ activeProduct: val });
+  };
+  render() {
+    return (
       <BrowserRouter>
         <nav className="nav">
           <div className="container">
@@ -30,7 +43,7 @@ const Navbar = () => {
                   <NavLink to="/help">Help</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/cart">
+                  <NavLink to="/checkout">
                     <button className="btn">
                       <FontAwesomeIcon icon={faShoppingCart} />
                       Your Cart
@@ -43,12 +56,19 @@ const Navbar = () => {
         </nav>
         <Switch>
           <Route exact path="/">
-            <Products />
+            <Products handler={this.handler} />
+          </Route>
+          {this.state.activeProduct && (
+            <Route exact path="/ProductDetail">
+              <ProductDetail product={this.state.activeProduct} />
+            </Route>
+          )}
+          <Route path="/checkout">
+            <Checkout data={this.cart} />
           </Route>
         </Switch>
       </BrowserRouter>
-    </ProductList>
-  );
-};
-
+    );
+  }
+}
 export default Navbar;

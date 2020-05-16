@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  margin: 0 auto;
+  padding: 0 1rem;
+  max-width: 1440px;
+}
+
+button {
+  padding: 0.5rem 1.5rem;
+  background-color: black;
+  color: white;
+  border: none;
+}

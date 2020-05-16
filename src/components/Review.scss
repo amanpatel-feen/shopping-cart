@@ -1,0 +1,23 @@
+.review-list {
+  list-style: none;
+}
+
+.user-details {
+  display: grid;
+  grid-template-columns: 0.2fr 0.3fr 2fr;
+  img {
+    border-radius: 50%;
+  }
+  p {
+    padding: 3rem;
+  }
+}
+.details {
+  padding: 3rem;
+  span {
+    display: block;
+  }
+}
+.wrapper-review {
+  padding: 1rem;
+}

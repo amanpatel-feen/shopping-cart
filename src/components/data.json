@@ -1,14 +1,15 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "title": "Google Pixel - Black",
-    "img": "img/product-1.png",
+    "img": "img/3.webp",
     "price": "10",
     "company": "GOOGLE",
-    "info": "this is a phone",
+    "info": "this is a phone this is a phone this is a phone this is a phone this is a phone this is a phone this is a phone this is a phone ",
     "inCart": false,
     "count": "0",
-    "total": "0"
+    "total": "0",
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 4,
@@ -41,7 +44,8 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 5,
@@ -52,7 +56,8 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 6,
@@ -63,7 +68,8 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 7,
@@ -74,7 +80,8 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 8,
@@ -85,7 +92,8 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 9,
@@ -96,7 +104,8 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 10,
@@ -107,7 +116,8 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 11,
@@ -118,7 +128,8 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   },
   {
     "id": 12,
@@ -129,6 +140,7 @@
     "info": "this is a phone",
     "inCart": false,
     "count": 0,
-    "total": 0
+    "total": 0,
+    "reviews": [{ "userid": 345, "review": "asdfljkasdjf", "rating": 4 }]
   }
 ]

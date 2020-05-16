@@ -8,16 +8,26 @@
 }
 
 .wrapper {
-  .image {
-    //    position: relative;
-    // display: flex;
+  width: 80%;
+  img {
+    width: 180px;
+    height: 100px;
+  }
+  .pro {
+    display: flex;
+    // justify-content: space-between;
+  }
+  .info-price {
+    span {
+      display: block;
+      // text-align: left;
+    }
+    .pro-name {
+      padding: 0;
+    }
   }
 
-  img {
-    // position: absolute;
-    width: 140px;
-    height: 100px;
-    // left: 0;
+  .image {
   }
 }
 .search-box {

@@ -9,11 +9,11 @@ export default class Summary extends Component {
             <h3>Summary</h3>
             <input type="text" placeholder="Enter Coupon Code"></input>
             {/*class for horizontal line */}
-            <span>SUBTOTAL {total_price_without_tax}</span>
-            <span>SHIPPING {shipping_fee}</span>
-            <span>TAXES {tax}</span>
+            <span>SUBTOTAL 1234</span>
+            <span>SHIPPING free</span>
+            <span>TAXES 14$</span>
             {/* class for horizontal line */}
-            <span>TOTAL {total_price}</span>
+            <span>TOTAL 1234</span>
           </div>
         </div>
       </>

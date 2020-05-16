@@ -1,0 +1,6 @@
+.sub-navbar {
+  list-style: none;
+  clear: both;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
