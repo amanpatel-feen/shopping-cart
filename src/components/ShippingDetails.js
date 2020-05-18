@@ -1,14 +1,28 @@
 import React, { Component } from "react";
+import "./CommonStyle.scss";
+import "./ShippingDetail.scss";
 
 export default class ShippingDetails extends Component {
   render() {
+    let temp = this.props.handler;
     return (
       <>
         <div className="container">
           <div className="wrapper-shipping">
+            <h2>Shipping Details</h2>
             <form action="#">
-              <input type="text" name="firstname" id="firstname" />
-              <input type="text" name="lastname" id="lastname" />
+              <input
+                type="text"
+                className="name"
+                name="firstname"
+                id="firstname"
+              />
+              <input
+                type="text"
+                className="name"
+                name="lastname"
+                id="lastname"
+              />
               <br />
               <input type="text" name="address" id="address" />
               <br />
@@ -21,40 +35,56 @@ export default class ShippingDetails extends Component {
                 <option value="Australia">Australia</option>
                 <option value="Thailand">Thailand</option>
               </select>
-              <input type="text" id="city" name="city"></input>
+              <input type="text" id="city" name="city" />
               <br />
               <input
                 type="number"
                 id="zip"
                 name="zip"
                 placeholder="Zip/Postal Code"
-              ></input>
+              />
               <input
                 type="number"
                 id="phone"
                 name="phone"
                 placeholder="Phone Number"
-              ></input>
-
-              <div className="free-shipping">
-                <input type="radio">
-                  <label for="free-shipping">
-                    <span>Free Shipping</span>
-                    <span>between 2-5 working days</span>
-                  </label>
-                </input>
+              />
+              <div className="hr-line"></div>
+              <div className="radios">
+                <div className="free-shipping">
+                  <input
+                    type="radio"
+                    name="shippingType"
+                    onClick={function () {
+                      temp(0);
+                    }}
+                  />
+                  <div className="free">
+                    <label for="free-shipping">
+                      <p>Free Shipping</p>
+                      <p class="delivery-type">between 2-5 working days</p>
+                    </label>
+                  </div>
+                </div>
+                <div className="next-day">
+                  <input
+                    type="radio"
+                    name="shippingType"
+                    onClick={function () {
+                      temp(1);
+                    }}
+                  />
+                  <div className="next">
+                    <label for="next-day">
+                      <p>Next Day Delivery - $20</p>
+                      <p class="delivery-type">24 hours from checkout</p>
+                    </label>
+                  </div>
+                </div>
               </div>
-              <div className="next-day">
-                <input type="radio">
-                  <label for="next-day">
-                    <span>Next Day Delivery - $20</span>
-                    <span>24 hours from checkout</span>
-                  </label>
-                </input>
-              </div>
-              <button>Next</button>
-              <button>Cancel</button>
             </form>
+            <button className="btn">Next</button>
+            <button className="btn-light">Cancel</button>
           </div>
         </div>
       </>

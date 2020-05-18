@@ -1,64 +1,49 @@
 import React, { Component } from "react";
+import "./CommonStyle.scss";
+import "./PaymentMethod.scss";
 
 export default class PaymentMethod extends Component {
   render() {
     return (
       <>
         <div className="container">
-          <div className="wrapper">
+          <div className="wrapper-paymentMethod">
+            <h2>Payment method</h2>
+            <div className="hr-line"></div>
             <div className="cardDetails">
-              <input type="radio" name="creditcard" />
-              <label for="card">
-                <span>Credit Card</span>
-                <span>lorem</span>
-              </label>
-              <input
-                class="inputCard"
-                type="number"
-                min="1000"
-                max="9999"
-                name="creditCard1"
-                id="creditCard1"
-                required
-              />
-              -
-              <input
-                class="inputCard"
-                type="number"
-                min="1000"
-                max="9999"
-                name="creditCard2"
-                id="creditCard2"
-                required
-              />
-              -
-              <input
-                class="inputCard"
-                type="number"
-                min="1000"
-                max="9999"
-                name="creditCard3"
-                id="creditCard3"
-                required
-              />
-              -
-              <input
-                class="inputCard"
-                type="number"
-                min="1000"
-                max="9999"
-                name="creditCard4"
-                id="creditCard4"
-                required
-              />
-              <input
-                class="inputCard"
-                name="expiry"
-                id="expiry"
-                type="month"
-                required
-              />
-              <input type="number" name="cvv" id="cvv" required />
+              <div className="cardType">
+                <input type="radio" name="creditcard" />
+                <label for="card">
+                  <span>Credit Card</span>
+                  <span>lorem</span>
+                </label>
+              </div>
+              <div className="card-number">
+                <input
+                  class="inputCard"
+                  type="number"
+                  min="1000"
+                  max="9999"
+                  name="creditCard1"
+                  id="creditCard1"
+                  required
+                />
+
+                <input
+                  class="inputCard1"
+                  name="expiry"
+                  id="expiry"
+                  type="month"
+                  required
+                />
+                <input
+                  type="number"
+                  className="cv"
+                  name="cvv"
+                  id="cvv"
+                  required
+                />
+              </div>
               <input type="text" placeholder="Card Holder Name"></input>
             </div>
             <div className="paypal">
@@ -69,8 +54,8 @@ export default class PaymentMethod extends Component {
               </label>
             </div>
 
-            <button>Pay Now</button>
-            <button>Cancel</button>
+            <button className="btn">Pay Now</button>
+            <button className="btn-light">Cancel</button>
           </div>
         </div>
       </>

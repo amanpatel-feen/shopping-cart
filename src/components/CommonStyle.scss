@@ -9,9 +9,22 @@
   max-width: 1440px;
 }
 
-button {
+.btn {
   padding: 0.5rem 1.5rem;
   background-color: black;
   color: white;
   border: none;
+  cursor: pointer;
+}
+.hr-line {
+  width: 510px;
+  height: 1px;
+  margin: 2rem 0;
+  background-color: #e85a4f;
+}
+.hr-line-small {
+  width: 100px;
+  height: 1px;
+  margin: 2rem 0;
+  background-color: #e85a4f;
 }

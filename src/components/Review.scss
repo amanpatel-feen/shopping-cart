@@ -8,16 +8,30 @@
   img {
     border-radius: 50%;
   }
-  p {
-    padding: 3rem;
-  }
 }
 .details {
-  padding: 3rem;
+  //   padding: 3rem;
   span {
     display: block;
   }
 }
 .wrapper-review {
   padding: 1rem;
+  h2 {
+    text-align: left;
+    font-size: 3rem;
+    font-weight: 300;
+    padding: 2rem;
+  }
+
+  .review-list {
+    padding: 2rem;
+
+    .user-details {
+      img {
+        height: 80px;
+        width: 80px;
+      }
+    }
+  }
 }

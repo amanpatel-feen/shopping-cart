@@ -3,6 +3,8 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import productData from "./data.json";
 import Summary from "./Summary";
+import "./CommonStyle.scss";
+import "./CartDetail.scss";
 export default class CartDetails extends Component {
   constructor(props) {
     super(props);
@@ -20,24 +22,26 @@ export default class CartDetails extends Component {
     let ele = this.state.data.map(function (e, idx) {
       return (
         <div key={idx} className="pro-info">
-          <img src={productData[e.productId - 1].img}></img>
+          <img src={productData[e.productId - 1].img} alt="#"></img>
           <div className="details">
             <span>{productData[e.productId - 1].title}</span>
-            <span>{productData[e.productId - 1].info}</span>
-            <span>{productData[e.productId - 1].price}</span>
+            <p>{productData[e.productId - 1].info}</p>
+            <span>&#8377; {productData[e.productId - 1].price}</span>
           </div>
-          <button
-            onClick={() => {
-              temp(idx);
-            }}
-          >
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
-          <select>
-            <option selected>1pc</option>
-            <option>2pc</option>
-            <option>3pc</option>
-          </select>
+          <div className="btns">
+            <button
+              onClick={() => {
+                temp(idx);
+              }}
+            >
+              <FontAwesomeIcon icon={faTrash} className="icon" />
+            </button>
+            <select>
+              <option selected>1pc</option>
+              <option>2pc</option>
+              <option>3pc</option>
+            </select>
+          </div>
         </div>
       );
     });
@@ -45,12 +49,11 @@ export default class CartDetails extends Component {
       <>
         <div className="container">
           <div className="wrapper-cartDetails">
-            <h3>Shopping Cart</h3>
+            <h2>Shopping Cart</h2>
             {ele}
-            <button>Next</button>
-            <button>Cancel</button>
+            <button className="btn">Next</button>
+            <button className="btn-light">Cancel</button>
           </div>
-          <Summary data={this.state.data} />
         </div>
       </>
     );

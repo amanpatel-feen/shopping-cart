@@ -1,0 +1,57 @@
+.pro-info {
+  display: flex;
+  img {
+    width: 20%;
+  }
+  .details {
+    text-align: left;
+    padding: 1rem 0;
+
+    span {
+      padding-top: 1rem;
+      font-size: 1.5rem;
+    }
+    p {
+      padding-top: 1rem;
+    }
+  }
+
+  .btns {
+    padding: 3rem 6rem;
+    button {
+      padding: 10px 40px;
+      //   margin-top: 10px;
+      background-color: white;
+      border: none;
+
+      .icon {
+        font-size: 1.4rem;
+      }
+    }
+    select {
+      padding: 8px 80px 8px 0;
+      background-color: white;
+    }
+  }
+}
+
+.wrapper-cartDetails {
+  padding: 2rem;
+  h2 {
+    text-align: left;
+    padding: 0 0 1rem 3rem;
+  }
+  button {
+    float: left;
+  }
+  .btn {
+    margin: 20px 0 0 60px;
+    &-light {
+      margin: 20px 0 0 20px;
+      padding: 0.5rem 1rem;
+      background-color: gray;
+      color: white;
+      border: none;
+    }
+  }
+}

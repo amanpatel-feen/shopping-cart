@@ -3,7 +3,6 @@ import { NavLink, BrowserRouter, Switch, Route } from "react-router-dom";
 import Products from "../Products";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ProductList } from "../context";
 import ProductDetail from "../ProductDetail";
 import Checkout from "../Checkout";
 
@@ -60,7 +59,10 @@ class Navbar extends React.Component {
           </Route>
           {this.state.activeProduct && (
             <Route exact path="/ProductDetail">
-              <ProductDetail product={this.state.activeProduct} />
+              <ProductDetail
+                product={this.state.activeProduct}
+                handler={this.handler}
+              />
             </Route>
           )}
           <Route path="/checkout">

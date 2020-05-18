@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PaymentMethod from "./PaymentMethod";
 import SubSummary from "./SubSummary";
+import "./CommonStyle.scss";
+import "./PaymentMethodCard.scss";
 export default class ShippingDetailCard extends Component {
   render() {
     return (
@@ -8,7 +10,7 @@ export default class ShippingDetailCard extends Component {
         <div className="container">
           <div className="payment-wrapper">
             <PaymentMethod />
-            <SubSummary />
+            <SubSummary data={this.props.data} />
           </div>
         </div>
       </>

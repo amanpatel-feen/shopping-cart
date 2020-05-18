@@ -5,6 +5,7 @@ import { NavLink, BrowserRouter, Switch, Route } from "react-router-dom";
 import Product from "./Product";
 import ProductDetail from "./ProductDetail";
 import "./Products.scss";
+import "./CommonStyle.scss";
 
 import data from "./data.json";
 
@@ -59,7 +60,7 @@ class Products extends React.Component {
         return (
           <div key={idx} className="product-block">
             <div className="container">
-              <div className="wrapper">
+              <div className="wrapper-pro">
                 <div className="image">
                   <img
                     className="prod-img"
@@ -67,35 +68,31 @@ class Products extends React.Component {
                     alt={e["title"]}
                     align="left"
                   />
-                </div>
-                <div class="button">
-                  <button
-                    onClick={() => {
-                      temp(e, 1);
-                    }}
-                  >
-                    {" "}
-                    Add To Cart{" "}
-                  </button>
-                </div>
 
-                <div className="info-price">
-                  <NavLink to="./ProductDetail">
-                    <a
-                      href="/ProductDetail"
-                      className="pro-name"
-                      id="product-name"
+                  <div className="info-price">
+                    <NavLink to="./ProductDetail">
+                      <a
+                        href="./ProductDetails"
+                        className="pro-name"
+                        onClick={() => {
+                          temp(e, 0, 0);
+                        }}
+                        id={e["id"]}
+                      >
+                        {e["title"]}
+                      </a>
+                    </NavLink>
+
+                    <span>{e["info"]}</span>
+                    <span class="price">&#8377;{e["price"]}</span>
+                    <button
                       onClick={() => {
-                        temp(e, 0);
+                        temp(e, 1, 0);
                       }}
-                      id={e["id"]}
                     >
-                      {e["title"]}
-                    </a>
-                  </NavLink>
-
-                  <span>{e["info"]}</span>
-                  <span>${e["price"]}</span>
+                      Add To Cart
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -108,13 +105,15 @@ class Products extends React.Component {
         <div className="product-container">
           <div className="search-box">
             <h1>Mobile E-commerce Shop</h1>
-            <input
-              type="text"
-              id="search-box"
-              onKeyUp={this.filter}
-              placeholder="Search..."
-            />
-            <button>Submit</button>
+            <div className="input-box">
+              <input
+                type="text"
+                id="search-box"
+                onKeyUp={this.filter}
+                placeholder="Search..."
+              />
+              <button>Submit</button>
+            </div>
           </div>
           <div className="products">
             <h2>Products Listing</h2>

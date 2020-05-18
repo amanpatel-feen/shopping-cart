@@ -7,8 +7,8 @@ $device-width: 1440px;
 }
 a {
   text-decoration: none;
-  padding: 1rem;
-  color: rgb(177, 171, 171);
+  color: rgb(100, 95, 95);
+  color: #e85a4f;
 }
 %flexbox {
   display: flex;
@@ -17,9 +17,12 @@ a {
   list-style: none;
   @extend %flexbox;
   margin: 0;
-
+  padding: 1rem;
   float: right;
-}
-.nav-wrapper {
-  background-color: rgb(224, 220, 220);
+  .line {
+    padding: 2rem;
+  }
+  .btn {
+    margin-left: 2rem;
+  }
 }

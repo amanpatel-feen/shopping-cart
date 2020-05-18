@@ -5,6 +5,10 @@ import "./Checkout.scss";
 import PaymentMethodCard from "./PaymentMethodCard";
 import ShippingDetailCard from "./ShippingDetailCard";
 export default class Checkout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: this.props.data };
+  }
   render() {
     return (
       <BrowserRouter>
@@ -12,7 +16,7 @@ export default class Checkout extends Component {
           <div className="subnav-wrapper">
             <ul className="sub-navbar">
               <li>
-                <NavLink to="/">1.Shopping Cart</NavLink>
+                <NavLink to="/checkout">1.Shopping Cart</NavLink>
               </li>
               <li>
                 <NavLink to="/ship">2.Shipping Details</NavLink>
@@ -24,14 +28,17 @@ export default class Checkout extends Component {
           </div>
 
           <Switch>
-            <Route exact path="/">
-              <ShoppingcartCard />
+            <Route exact path="/checkout">
+              <ShoppingcartCard
+                handler={this.props.handler}
+                data={this.props.data}
+              />
             </Route>
             <Route exact path="/ship">
-              <ShippingDetailCard />
+              <ShippingDetailCard data={this.props.data} />
             </Route>
             <Route exact path="/pay">
-              <PaymentMethodCard />
+              <PaymentMethodCard data={this.props.data} />
             </Route>
           </Switch>
         </div>
