@@ -7,10 +7,17 @@ import "./Product.scss";
 export default class Product extends Component {
   constructor(props) {
     super(props);
+    this.state={activeModel:0};
     this.product = this.props.product;
   }
+  changeModel = (val)=>{
+  	console.log(val);
+  	this.setState({activeModel:val});
+  };
   render() {
-    let temp = this.props.handler;
+    let addToCart = this.props.addToCart;
+    let changeModel = this.changeModel;
+    let models = this.product.models.map((e,idx)=>{return (<option key={idx} value={idx} onClick={()=>{changeModel(idx)}}>{e}</option>)});
     return (
       <>
         <div className="container">
@@ -22,12 +29,9 @@ export default class Product extends Component {
             <div className="info">
               <h2>{this.product.title}</h2>
               <div className="hr-line"></div>
-              <span>Price: &#8377; {this.product.price}</span>
+              <span>Price: &#8377; {this.product.price[this.state.activeModel]}</span>
               <select>
-                <option>Select Model</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+                {models}
               </select>
               <div className="hr-line"></div>
               <p>{this.product.info1}</p>
@@ -35,7 +39,7 @@ export default class Product extends Component {
               <button
                 className="btn"
                 onClick={() => {
-                  temp(this.product, 1, 0);
+                  addToCart(this.product,this.state.activeModel);
                 }}
               >
                 Add To Cart

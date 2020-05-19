@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { NavLink, BrowserRouter, Switch, Route } from "react-router-dom";
+import { NavLink, BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
 import ShoppingcartCard from "./ShoppingcartCard";
 import "./Checkout.scss";
+import Navbar from "./Navbar/Navbar";
 import PaymentMethodCard from "./PaymentMethodCard";
 import ShippingDetailCard from "./ShippingDetailCard";
 export default class Checkout extends Component {
@@ -28,9 +29,9 @@ export default class Checkout extends Component {
           </div>
 
           <Switch>
-            <Route exact path="/checkout">
+		<Route exact path="/checkout">
               <ShoppingcartCard
-                handler={this.props.handler}
+                removeProduct={this.props.removeProduct}
                 data={this.props.data}
               />
             </Route>

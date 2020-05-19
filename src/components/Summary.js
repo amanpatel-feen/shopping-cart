@@ -12,10 +12,12 @@ export default class Summary extends Component {
   calculateTotal = (items) => {
     let totalSum = 0;
     items.forEach((e) => {
-      let price = productData[e.productId - 1].price;
-      price *= e.itemCount;
+      let price = productData[e.productId - 1].price[e.productModel];
+      console.log(price)
+      price *= e.productCount;
       totalSum += price;
     });
+    
     this.shippingFee = this.props.data.length ? 20 : 0;
     return totalSum;
   };

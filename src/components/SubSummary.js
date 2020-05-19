@@ -11,8 +11,8 @@ export default class SubSummary extends Component {
   calculateTotal = (items) => {
     let totalSum = 0;
     items.forEach((e) => {
-      let price = productData[e.productId - 1].price;
-      price *= e.itemCount;
+      let price = productData[e.productId - 1].price[e.productModel];
+      price *= e.productCount;
       totalSum += price;
     });
     this.shippingFee = this.props.shippingType ? 34 : 0;
@@ -29,7 +29,7 @@ export default class SubSummary extends Component {
           <div className="img-detail">
             <p>{productData[e.productId - 1].title}</p>
             <p className="price">
-              &#8377; {productData[e.productId - 1].price}
+              &#8377; {productData[e.productId - 1].price[e.productModel]}
             </p>
           </div>
         </div>

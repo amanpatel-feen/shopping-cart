@@ -15,7 +15,6 @@ class Products extends React.Component {
     this.state = { data: data };
   }
 
-  // console.log(prod);
   componentDidMount() {
     fetch(`./data.json`, {
       headers: {
@@ -51,10 +50,11 @@ class Products extends React.Component {
       else blocks[i].style.display = "none";
     }
   };
+  
+ 
 
   render() {
-    let ele = null;
-    let temp = this.props.handler;
+    let ele = null,addToCart = this.props.addToCart,changeProduct = this.props.changeProduct;
     if (this.state.data) {
       ele = this.state.data.map(function (e, idx) {
         return (
@@ -75,7 +75,7 @@ class Products extends React.Component {
                         href="./ProductDetails"
                         className="pro-name"
                         onClick={() => {
-                          temp(e, 0, 0);
+                         changeProduct(e)
                         }}
                         id={e["id"]}
                       >
@@ -84,12 +84,8 @@ class Products extends React.Component {
                     </NavLink>
 
                     <span>{e["info"]}</span>
-                    <span class="price">&#8377;{e["price"]}</span>
-                    <button
-                      onClick={() => {
-                        temp(e, 1, 0);
-                      }}
-                    >
+                    <span class="price">&#8377;{e["price"][0]}</span>
+                    <button onClick={() => {addToCart(e,0)}}>
                       Add To Cart
                     </button>
                   </div>

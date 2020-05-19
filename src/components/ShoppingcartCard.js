@@ -10,7 +10,7 @@ export default class ShoppingcartCard extends Component {
       <>
         <div className="container">
           <div className="cart-wrapper">
-            <CartDetails handler={this.props.handler} data={this.props.data} />
+            <CartDetails removeProduct={this.props.removeProduct} data={this.props.data} />
             <Summary data={this.props.data} />
           </div>
         </div>

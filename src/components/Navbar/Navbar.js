@@ -8,17 +8,37 @@ import Checkout from "../Checkout";
 
 import "./Navbar.scss";
 class Navbar extends React.Component {
-  constructor(props) {
+  constructor(props){
     super(props);
     this.state = {
       activeProduct: null,
+      cart:[],
     };
-    this.cart = [];
   }
-  handler = (val, addToCart) => {
-    if (addToCart) this.cart.push({ productId: val.id, itemCount: 1 });
-    else this.setState({ activeProduct: val });
+  
+  //Change the active product 
+  changeProduct = (product) => {this.setState({activeProduct: product})}
+  
+  //Add the product to the cart
+  addToCart = (product,model) => {
+  	let found=false;
+  	for(let i=0;i<this.state.cart.length;i++){
+  		if(this.state.cart[i].productId===product.id){
+  			this.state.cart[i].productCount+=1;
+  			found=true;
+  			break;
+  		}
+  	}
+  	if(!found)
+  		this.state.cart.push({productId: product.id, productModel:model, productCount: 1});
+  		}
+  		
+   removeProduct = (idx) => {
+    let tempCart = this.state.cart;
+    tempCart.splice(idx, 1);
+    this.setState({ cart:tempCart });
   };
+  
   render() {
     return (
       <BrowserRouter>
@@ -55,18 +75,18 @@ class Navbar extends React.Component {
         </nav>
         <Switch>
           <Route exact path="/">
-            <Products handler={this.handler} />
+            <Products addToCart={this.addToCart} changeProduct={this.changeProduct}/>
           </Route>
           {this.state.activeProduct && (
             <Route exact path="/ProductDetail">
               <ProductDetail
-                product={this.state.activeProduct}
-                handler={this.handler}
+                activeProduct={this.state.activeProduct}
+                addToCart={this.addToCart}
               />
             </Route>
           )}
           <Route path="/checkout">
-            <Checkout data={this.cart} />
+            <Checkout data={this.state.cart} removeProduct={this.removeProduct}/>
           </Route>
         </Switch>
       </BrowserRouter>

@@ -10,15 +10,10 @@ export default class CartDetails extends Component {
     super(props);
 
     this.state = { data: this.props.data };
-    this.removeItem = this.removeItem.bind(this);
   }
-  removeItem = (idx) => {
-    let tempList = this.state.data;
-    tempList.splice(idx, 1);
-    this.setState({ data: tempList });
-  };
+ 
   render() {
-    let temp = this.removeItem;
+    let removeProduct = this.props.removeProduct;
     let ele = this.state.data.map(function (e, idx) {
       return (
         <div key={idx} className="pro-info">
@@ -26,21 +21,17 @@ export default class CartDetails extends Component {
           <div className="details">
             <span>{productData[e.productId - 1].title}</span>
             <p>{productData[e.productId - 1].info}</p>
-            <span>&#8377; {productData[e.productId - 1].price}</span>
+            <span>&#8377; {productData[e.productId - 1].price[e.productModel]}</span>
           </div>
           <div className="btns">
             <button
               onClick={() => {
-                temp(idx);
+                removeProduct(idx);
               }}
             >
               <FontAwesomeIcon icon={faTrash} className="icon" />
             </button>
-            <select>
-              <option selected>1pc</option>
-              <option>2pc</option>
-              <option>3pc</option>
-            </select>
+           	<span>Quantity : {e.productCount}</span>
           </div>
         </div>
       );
