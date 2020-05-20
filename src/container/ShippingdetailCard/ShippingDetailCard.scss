@@ -1,0 +1,10 @@
+.ShippingDetailCard-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+@media (max-width: 575.98px) {
+  .ShippingDetailCard-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

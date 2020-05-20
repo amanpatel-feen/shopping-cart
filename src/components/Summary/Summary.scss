@@ -1,0 +1,26 @@
+.wrapper-summary {
+  text-align: left;
+  padding: 2rem 0;
+  span {
+    float: right;
+  }
+  p {
+    padding: 10px 0;
+  }
+
+  .hr-line-small {
+    margin: 15px 0;
+    width: 280px;
+  }
+
+  input[type="text"] {
+    border: none;
+    width: 280px;
+    padding: 5px 0;
+  }
+  ::-webkit-input-placeholder {
+    color: black;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}

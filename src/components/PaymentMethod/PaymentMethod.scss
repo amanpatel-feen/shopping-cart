@@ -1,0 +1,88 @@
+.wrapper-paymentMethod {
+  padding: 1rem;
+  h2 {
+    text-align: left;
+  }
+  .cardType {
+    display: flex;
+    input[type="radio"] {
+      padding: 20px;
+    }
+    span {
+      padding: 2px;
+    }
+  }
+  .cardDetails {
+    // padding: 1rem;
+    text-align: left;
+    span {
+      display: block;
+    }
+
+    .card {
+      border: 1px solid gray;
+      padding: 1rem;
+    }
+  }
+  .hr-line {
+    width: 580px;
+  }
+  .inputCard {
+    width: 250px;
+    margin: 10px 0;
+    height: 30px;
+  }
+
+  .inputCard1,
+  .cv {
+    width: 105px;
+    margin: 10px;
+    height: 30px;
+  }
+
+  input[type="text"] {
+    width: 490px;
+    height: 30px;
+  }
+  input[type="radio"] {
+    margin: 10px;
+  }
+  .paypal {
+    display: flex;
+    border: 1px solid gray;
+    margin: 1rem 0;
+    text-align: left;
+    padding: 1rem;
+    span {
+      display: block;
+    }
+  }
+  .btn-light {
+    background-color: gray;
+    border: none;
+    padding: 0.5rem 2rem;
+    margin-left: 10px;
+    color: white;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .wrapper-paymentMethod {
+    padding: 0;
+    .hr-line {
+      width: 100%;
+    }
+    .inputCard {
+      width: 100%;
+      display: block;
+    }
+    .inputCard1,
+    .cv {
+      width: 100%;
+      margin: 10px 0;
+    }
+    input[type="text"] {
+      width: 100%;
+    }
+  }
+}

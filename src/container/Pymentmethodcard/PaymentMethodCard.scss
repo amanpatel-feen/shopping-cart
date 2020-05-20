@@ -1,0 +1,11 @@
+.payment-wrapper {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 2rem;
+}
+
+@media (max-width: 575.98px) {
+  .payment-wrapper {
+    grid-template-columns: 1fr;
+  }
+}

@@ -15,6 +15,11 @@
   color: white;
   border: none;
   cursor: pointer;
+  &:hover {
+    color: #e85a4f;
+    background-color: white;
+    border: 1px solid gray;
+  }
 }
 .hr-line {
   width: 510px;
@@ -27,4 +32,103 @@
   height: 1px;
   margin: 2rem 0;
   background-color: #e85a4f;
+}
+button {
+  &:hover {
+    color: #e85a4f;
+    background-color: white;
+    border: 1px solid gray;
+  }
+}
+
+.slidefrombottom {
+  animation: 2s ease-in 0s 1 slideInFromBottom;
+
+  @keyframes slideInFromBottom {
+    0% {
+      transform: translateY(500%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+.slidefromtop {
+  animation: 2s ease-in 0s 1 slideInFromTop;
+
+  @keyframes slideInFromTop {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
+.slidefromleft {
+  animation: 2s ease-in 0s 1 slideInFromLeft;
+
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+.slidefromRight {
+  animation: 2s ease-in 0s 1 slideInFromRight;
+
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+.animatefromtop {
+  animation: animateFromTop ease-in 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  @keyframes animateFromTop {
+    0% {
+      height: 0%;
+    }
+    100% {
+      height: 100%;
+    }
+  }
+}
+.fadeinfromleft {
+  animation: fadeInFromLeft ease-in 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  @keyframes fadeInFromLeft {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+}
+.fadeinanimation {
+  animation: fadeInAnimation ease-in 2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 }

@@ -1,51 +1,69 @@
 import React from "react";
 import { NavLink, BrowserRouter, Switch, Route } from "react-router-dom";
-import Products from "../Products";
+import Products from "../Products/Products";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ProductDetail from "../ProductDetail";
-import Checkout from "../Checkout";
+import ProductDetail from "../../container/Producdetail/ProductDetail";
+import Checkout from "../../container/Checkout/Checkout";
 
 import "./Navbar.scss";
 class Navbar extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       activeProduct: null,
-      cart:[],
+      cart: [],
     };
   }
-  
-  //Change the active product 
-  changeProduct = (product) => {this.setState({activeProduct: product})}
-  
+
+  //Change the active product
+  changeProduct = (product) => {
+    this.setState({ activeProduct: product });
+  };
+
   //Add the product to the cart
-  addToCart = (product,model) => {
-  	let found=false;
-  	for(let i=0;i<this.state.cart.length;i++){
-  		if(this.state.cart[i].productId===product.id){
-  			this.state.cart[i].productCount+=1;
-  			found=true;
-  			break;
-  		}
-  	}
-  	if(!found)
-  		this.state.cart.push({productId: product.id, productModel:model, productCount: 1});
-  		}
-  		
-   removeProduct = (idx) => {
+  addToCart = (product, model) => {
+    let found = false;
+    for (let i = 0; i < this.state.cart.length; i++) {
+      if (this.state.cart[i].productId === product.id) {
+        this.state.cart[i].productCount += 1;
+        found = true;
+        break;
+      }
+    }
+    if (!found)
+      this.state.cart.push({
+        productId: product.id,
+        productModel: model,
+        productCount: 1,
+      });
+  };
+
+  removeProduct = (idx) => {
     let tempCart = this.state.cart;
     tempCart.splice(idx, 1);
-    this.setState({ cart:tempCart });
+    this.setState({ cart: tempCart });
   };
-  
+
+  changeQty = (product, count) => {
+    let tempCart = this.state.cart;
+    for (let i = 0; i < tempCart.length; i++) {
+      if (tempCart[i].productId === product.productId && count > 0) {
+        tempCart[i].productCount += count;
+        break;
+      }
+    }
+    this.setState({ cart: tempCart });
+    console.log(this.state);
+  };
+
   render() {
     return (
       <BrowserRouter>
         <nav className="nav">
           <div className="container">
             <div className="nav-wrapper">
-              <ul className="right">
+              <ul className="right fadeinanimation">
                 <li>
                   <NavLink to="/">Home </NavLink>
                   <span className="line">|</span>
@@ -66,6 +84,7 @@ class Navbar extends React.Component {
                     <button className="btn">
                       <FontAwesomeIcon icon={faShoppingCart} />
                       Your Cart
+                      <span>{this.state.cart.length}</span>
                     </button>
                   </NavLink>
                 </li>
@@ -75,7 +94,10 @@ class Navbar extends React.Component {
         </nav>
         <Switch>
           <Route exact path="/">
-            <Products addToCart={this.addToCart} changeProduct={this.changeProduct}/>
+            <Products
+              addToCart={this.addToCart}
+              changeProduct={this.changeProduct}
+            />
           </Route>
           {this.state.activeProduct && (
             <Route exact path="/ProductDetail">
@@ -86,7 +108,11 @@ class Navbar extends React.Component {
             </Route>
           )}
           <Route path="/checkout">
-            <Checkout data={this.state.cart} removeProduct={this.removeProduct}/>
+            <Checkout
+              data={this.state.cart}
+              removeProduct={this.removeProduct}
+              changeQty={this.changeQty}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

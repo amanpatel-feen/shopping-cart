@@ -1,0 +1,11 @@
+.cart-wrapper {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+@media (max-width: 575.98px) {
+  .cart-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
