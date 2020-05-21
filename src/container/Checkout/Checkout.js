@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  NavLink,
-  BrowserRouter,
-  Switch,
-  Route,
-  Redirect,
-} from "react-router-dom";
+import { NavLink, BrowserRouter, Switch, Route } from "react-router-dom";
 import ShoppingcartCard from "../ShoppingcartCard/ShoppingcartCard";
 import "./Checkout.scss";
 import PaymentMethodCard from "../Pymentmethodcard/PaymentMethodCard";
@@ -13,8 +7,26 @@ import ShippingDetailCard from "../ShippingdetailCard/ShippingDetailCard";
 export default class Checkout extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: this.props.data };
+    this.state = { data: this.props.data, discount: 0 };
+    this.couponCodes = [
+      { code: "extra50", discount: 50 },
+      { code: "firsttime", discount: 40 },
+      { code: "dhamaka30", discount: 30 },
+    ];
   }
+
+  applyDiscount = (code) => {
+    let found = false;
+    for (let offer of this.couponCodes) {
+      if (offer.code === code) {
+        this.setState({ discount: offer.discount });
+        found = true;
+        break;
+      }
+    }
+    if (!found) alert("Invalid coupon code");
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -39,13 +51,21 @@ export default class Checkout extends Component {
                 removeProduct={this.props.removeProduct}
                 data={this.props.data}
                 changeQty={this.props.changeQty}
+                applyDiscount={this.applyDiscount}
+                discount={this.state.discount}
               />
             </Route>
             <Route exact path="/ship">
-              <ShippingDetailCard data={this.props.data} />
+              <ShippingDetailCard
+                data={this.props.data}
+                discount={this.state.discount}
+              />
             </Route>
             <Route exact path="/pay">
-              <PaymentMethodCard data={this.props.data} />
+              <PaymentMethodCard
+                data={this.props.data}
+                discount={this.state.discount}
+              />
             </Route>
           </Switch>
         </div>

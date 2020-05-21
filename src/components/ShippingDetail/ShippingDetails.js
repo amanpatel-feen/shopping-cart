@@ -3,6 +3,20 @@ import "../CommonStyle.scss";
 import "./ShippingDetail.scss";
 
 export default class ShippingDetails extends Component {
+  consoleDetails = () => {
+    let form = document.getElementById("shipform");
+    let data = Array.from(form.querySelectorAll("input, select")).map((e) => {
+      let key = e.getAttribute("name");
+      if (key === "shippingType") return [e.value, e.checked];
+      return [e.name, e.value];
+    });
+    data.forEach((e) => {
+      if (e[0] === "Free Shipping" || e[0] === "Paid Shipping") {
+        if (e[1] === true) console.log(`Shipping Type : ${e[0]}`);
+      } else console.log(`${e[0]} : ${e[1]}`);
+    });
+  };
+
   render() {
     let temp = this.props.handler;
     return (
@@ -10,13 +24,19 @@ export default class ShippingDetails extends Component {
         <div className="container">
           <div className="wrapper-shipping">
             <h2>Shipping Details</h2>
-            <form action="#">
+            <form
+              action="#"
+              id="shipform"
+              onSubmit={(e) => {
+                this.consoleDetails();
+                e.preventDefault();
+              }}
+            >
               <input
                 type="text"
                 className="name"
                 name="firstname"
                 id="firstname"
-                placeholder="First Name"
                 required
               />
               <input
@@ -24,31 +44,21 @@ export default class ShippingDetails extends Component {
                 className="name"
                 name="lastname"
                 id="lastname"
-                placeholder="Last Name"
+                required
               />
               <br />
-              <input
-                type="text"
-                name="address"
-                id="address"
-                placeholder="Address line 1"
-              />
+              <input type="text" name="address" id="address" />
               <br />
-              <input
-                type="text"
-                name="address2"
-                id="address2"
-                placeholder="Address Line 2"
-              />
+              <input type="text" name="address2" id="address2" />
               <br />
-              <select>
+              <select name="country">
                 <option value="">Country</option>
                 <option value="India">India</option>
-                <option value="Mexico">USA</option>
+                <option value="USA">USA</option>
                 <option value="Australia">Australia</option>
                 <option value="Thailand">Thailand</option>
               </select>
-              <input type="text" id="city" name="city" placeholder="City" />
+              <input type="text" id="city" name="city" />
               <br />
               <input
                 type="number"
@@ -68,6 +78,7 @@ export default class ShippingDetails extends Component {
                   <input
                     type="radio"
                     name="shippingType"
+                    value="Free Shipping"
                     onClick={function () {
                       temp(0);
                     }}
@@ -83,6 +94,7 @@ export default class ShippingDetails extends Component {
                   <input
                     type="radio"
                     name="shippingType"
+                    value="Paid Shipping"
                     onClick={function () {
                       temp(1);
                     }}
@@ -95,7 +107,9 @@ export default class ShippingDetails extends Component {
                   </div>
                 </div>
               </div>
-              <button className="btn">Next</button>
+              <button type="submit" className="btn">
+                Next
+              </button>
               <button className="btn-light">Cancel</button>
             </form>
           </div>

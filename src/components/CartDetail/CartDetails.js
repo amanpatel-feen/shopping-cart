@@ -1,9 +1,12 @@
 import React, { Component } from "react";
+import { NavLink, BrowserRouter, Switch, Route } from "react-router-dom";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import productData from "../data.json";
 import "../CommonStyle.scss";
 import "./CartDetail.scss";
+import PaymentMethodCard from "../../container/Pymentmethodcard/PaymentMethodCard";
+import ShippingDetailCard from "../../container/ShippingdetailCard/ShippingDetailCard";
 export default class CartDetails extends Component {
   constructor(props) {
     super(props);
@@ -57,20 +60,34 @@ export default class CartDetails extends Component {
               </div>
             </div>
           </div>
-          <button className="btn">Next</button>
-          <button className="btn-light">Cancel</button>
         </>
       );
     });
     return (
-      <>
+      <BrowserRouter>
         <div className="container">
           <div className="wrapper-cartDetails">
             <h2>Shopping Cart</h2>
+            {!this.state.data.length && <span>cart is empty</span>}
             {ele}
+            <NavLink to="/ship">
+              <button className="btn">Next</button>
+            </NavLink>
+            <NavLink to="/home">
+              <button className="btn-light">Cancel</button>
+            </NavLink>
+
+            <Switch>
+              <Route exact path="/ship">
+                <ShippingDetailCard data={this.props.data} />
+              </Route>
+              <Route exact path="/ship">
+                <PaymentMethodCard data={this.props.data} />
+              </Route>
+            </Switch>
           </div>
         </div>
-      </>
+      </BrowserRouter>
     );
   }
 }

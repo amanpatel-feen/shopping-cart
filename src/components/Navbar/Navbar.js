@@ -7,6 +7,7 @@ import ProductDetail from "../../container/Producdetail/ProductDetail";
 import Checkout from "../../container/Checkout/Checkout";
 
 import "./Navbar.scss";
+import "./Navbar.scss";
 class Navbar extends React.Component {
   constructor(props) {
     super(props);
@@ -31,12 +32,15 @@ class Navbar extends React.Component {
         break;
       }
     }
-    if (!found)
-      this.state.cart.push({
+    if (!found) {
+      let tempCart = this.state.cart;
+      tempCart.push({
         productId: product.id,
         productModel: model,
         productCount: 1,
       });
+      this.setState({ cart: tempCart });
+    }
   };
 
   removeProduct = (idx) => {
@@ -48,7 +52,7 @@ class Navbar extends React.Component {
   changeQty = (product, count) => {
     let tempCart = this.state.cart;
     for (let i = 0; i < tempCart.length; i++) {
-      if (tempCart[i].productId === product.productId && count > 0) {
+      if (tempCart[i].productId === product.productId) {
         tempCart[i].productCount += count;
         break;
       }
@@ -56,14 +60,17 @@ class Navbar extends React.Component {
     this.setState({ cart: tempCart });
     console.log(this.state);
   };
-
+  componentDidUpdate() {
+    this.render();
+  }
   render() {
+    let totalItems = this.state.cart.length;
     return (
       <BrowserRouter>
         <nav className="nav">
           <div className="container">
             <div className="nav-wrapper">
-              <ul className="right fadeinanimation">
+              <ul className="right">
                 <li>
                   <NavLink to="/">Home </NavLink>
                   <span className="line">|</span>
@@ -83,8 +90,7 @@ class Navbar extends React.Component {
                   <NavLink to="/checkout">
                     <button className="btn">
                       <FontAwesomeIcon icon={faShoppingCart} />
-                      Your Cart
-                      <span>{this.state.cart.length}</span>
+                      Your Cart<span>{this.state.cart.length}</span>
                     </button>
                   </NavLink>
                 </li>

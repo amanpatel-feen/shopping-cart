@@ -3,7 +3,6 @@ import ShippingDetails from "../../components/ShippingDetail/ShippingDetails";
 import SubSummary from "../../components/SubSummary/SubSummary";
 import "./ShippingDetailCard.scss";
 import "../../components/CommonStyle.scss";
-
 export default class ShippingDetailCard extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +20,7 @@ export default class ShippingDetailCard extends Component {
             <SubSummary
               data={this.props.data}
               shippingType={this.state.shippingType}
+              discount={this.props.discount}
             />
           </div>
         </div>

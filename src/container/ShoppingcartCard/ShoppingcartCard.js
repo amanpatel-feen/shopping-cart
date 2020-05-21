@@ -15,7 +15,11 @@ export default class ShoppingcartCard extends Component {
               data={this.props.data}
               changeQty={this.props.changeQty}
             />
-            <Summary data={this.props.data} />
+            <Summary
+              data={this.props.data}
+              applyDiscount={this.props.applyDiscount}
+              discount={this.props.discount}
+            />
           </div>
         </div>
       </>

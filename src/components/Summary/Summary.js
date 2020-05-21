@@ -6,8 +6,8 @@ import "./Summary.scss";
 export default class Summary extends Component {
   constructor(props) {
     super(props);
-    this.shippingFee = this.props.data.length ? 10 : 0;
-    this.tax = 10;
+    this.shippingFee = this.props.data.length ? 20 : 0;
+    this.tax = 20;
   }
   calculateTotal = (items) => {
     let totalSum = 0;
@@ -18,19 +18,30 @@ export default class Summary extends Component {
       totalSum += price;
     });
 
-    this.shippingFee = this.props.data.length ? 20 : 0;
+    this.shippingFee = 0;
     return totalSum;
   };
   render() {
     this.subTotal = this.calculateTotal(this.props.data);
-    console.log(this.subTotal);
+    let applyDiscount = this.props.applyDiscount;
     return (
       <>
         <div className="container">
           <div className="wrapper-summary">
-            <h2>Summary</h2>
+            <h3>Summary</h3>
             <div className="hr-line-small"></div>
-            <input type="text" placeholder="Enter Coupon Code"></input>
+            <input
+              type="text"
+              placeholder="Enter Coupon Code"
+              id="couponcode"
+            />
+            <button
+              onClick={() => {
+                applyDiscount(document.getElementById("couponcode").value);
+              }}
+            >
+              Apply
+            </button>
             <div className="hr-line-small"></div>
             <p>
               SUBTOTAL
@@ -44,14 +55,24 @@ export default class Summary extends Component {
               TAXES
               <span className="cost"> {this.tax}%</span>
             </p>
+            <p>
+              Discount
+              <span className="cost"> {this.props.discount}</span>
+            </p>
 
             <div className="hr-line-small"></div>
             <p>
               TOTAL{" "}
               <span>
-                {this.subTotal +
-                  this.subTotal * (this.tax / 100) +
-                  this.shippingFee}
+                {Math.round(
+                  Math.max(
+                    this.subTotal +
+                      this.subTotal * (this.tax / 100) +
+                      this.shippingFee -
+                      this.props.discount,
+                    0
+                  )
+                )}
               </span>
             </p>
           </div>

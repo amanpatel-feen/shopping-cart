@@ -1,0 +1,23 @@
+nav {
+  p {
+    text-align: center;
+    color: black;
+    padding: 1rem 0;
+  }
+
+  .footer {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    li {
+      transition: all 0.5s ease-in-out;
+      padding: 1rem;
+      &:hover {
+        transform: translateY(2px);
+      }
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+}
